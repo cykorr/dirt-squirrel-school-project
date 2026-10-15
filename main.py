@@ -1,15 +1,40 @@
-def menu():
-  print("menu/n(1) enter/n(2) pay/n(3) exit/n(q) quit")
+import time
+
 ans = ""
-while ans.lower != "q":
-  menu()
-  ans = input("enter : ")
-  if ans == 1:
-    print("1)
-          elif ans == 2:
-          print("2")
-          elif ans == 3:
-          print("3")
-          else:
-            print("input wrong")
+PPS = 999.999
+def menu():
+  print("menu\n(1) enter\n(2) pay\n(3) exit\n(q) quit")
+
+def enter():
+    global timeEnter
+
+    license = input("enter licnese num : ")
+    timeEnter = time.time()
+    print(f"ur license is {license}")
+
+def pay():
+    global pay
+    timeExit = time.time()
+    timeStayed = timeExit - timeEnter
+    cost = timeStayed * PPS
+    print(f"pay {cost} rn \n you stayed for {timeStayed} seconds")
+    pay = True
+    
+def exit():
+    if pay == True:
+        print("bye")
+    else:
+        print("pay or else")
+    
+while ans != "q":
+    menu()
+    ans = input("enter : ")
+    if ans == "1":
+        enter()
+    elif ans == "2":
+        pay()
+    elif ans == "3":
+        exit()
+    else:
+        print("input wrong")
     
